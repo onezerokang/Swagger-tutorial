@@ -1,0 +1,167 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Example API",
+    "description": "Swagger autogen학습을 위한 예시문서입니다.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "localhost:3000"
+    },
+    {
+      "url": "http://localhost:3000/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "User",
+      "description": "User Endpoint"
+    },
+    {
+      "name": "Car",
+      "description": "Car Endpoint"
+    }
+  ],
+  "paths": {
+    "/users/{id}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "유저를 가져옵니다.",
+        "description": "id와 일치하는 유저를 가져옵니다.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "여기 설명 넣으시면 됩니다.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "유저를 가져옵니다.",
+        "description": "id와 일치하는 유저를 가져옵니다.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "여기 설명 넣으시면 됩니다.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cars/{id}": {
+      "get": {
+        "tags": [
+          "Car"
+        ],
+        "summary": "차를 가져옵니다.",
+        "description": "id와 일치하는 차를 가져옵니다.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "여기 설명 넣으시면 됩니다.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Car"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 0
+          },
+          "name": {
+            "type": "string",
+            "example": "Haha"
+          },
+          "height": {
+            "type": "number",
+            "example": 169
+          }
+        }
+      },
+      "Car": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "example": "benz"
+          },
+          "owner": {
+            "$ref": "#/components/schemas/User"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "apiKeyAuth": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "auth",
+        "description": "유저 토큰을 넣어주세요"
+      }
+    }
+  }
+}
